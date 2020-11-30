@@ -124,6 +124,7 @@ public class Shader {
     public void detach() {
         glUseProgram(0);
         beingUsed = false;
+
     }
 
     public void uploadMat4f(String varName, Matrix4f mat4) {
@@ -169,5 +170,11 @@ public class Shader {
         int varLocation = glGetUniformLocation(shaderProgramID, varName);
         use();
         glUniform1i(varLocation, val);
+    }
+
+    public void uploadTexture(String varName, int slot) {
+        int varLocation = glGetUniformLocation(shaderProgramID, varName);
+        use();
+        glUniform1i(varLocation, slot);
     }
 }
